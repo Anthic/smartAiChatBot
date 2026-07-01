@@ -9,9 +9,9 @@ from app.vector_store.qdrant_client import search_vectors
 
 class RetrievedChunk(TypedDict) : 
     text : str
-    score : str
+    score : float
     source_file : str
-    chunk_index : str
+    chunk_index : int
     
 class RetrievalError(RuntimeError) :
     """Raised when RAG retrieval fails."""
@@ -55,6 +55,36 @@ def _filter_relevant_results(results : list[dict]) -> list[RetrievedChunk]:
             {
                 "text" : result.get("text", ""),
                 "score" : score,
-                "source_file" : result.get("source_file", "unknown")
+                "source_file" : result.get("source_file", "unknown"),
+                "chunk_index" : int(result.get("chunk_index", -1))
             }
         )
+    return relevant_chunks
+
+def format_chunks_for_prompt(chunks: list[RetrievedChunk]) -> str:
+    """
+    Convert retrieved chunks into clean context text for the LLM prompt.
+
+    This will be useful in Phase 7 when AgentRouter needs to send
+    retrieved document context to Mistral.
+    """
+    if not chunks:
+        return ""
+
+    formatted_chunks: list[str] = []
+
+    for index, chunk in enumerate(chunks, start=1):
+        formatted_chunks.append(
+            "\n".join(
+                [
+                    f"[Source {index}]",
+                    f"File: {chunk['source_file']}",
+                    f"Chunk: {chunk['chunk_index']}",
+                    f"Score: {chunk['score']:.4f}",
+                    "Content:",
+                    chunk["text"],
+                ]
+            )
+        )
+
+    return "\n\n".join(formatted_chunks)

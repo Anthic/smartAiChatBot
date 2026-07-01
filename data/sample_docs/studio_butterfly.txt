@@ -1,0 +1,7 @@
+Studio Butterfly is building a Smart AI Agent using FastAPI, Mistral AI, and Qdrant.
+
+The agent must support document ingestion, retrieval augmented generation, conversation memory, and mock tool calling.
+
+The RAG pipeline loads uploaded documents, splits them into chunks, creates embeddings using mistral-embed, and stores the vectors in Qdrant.
+
+The assistant should answer questions using uploaded document context when relevant.

@@ -196,7 +196,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 3 — RAG Ingestion Pipeline (Day 2, ~2 hours)
+### ✅ PHASE 3 — RAG Ingestion Pipeline (Day 2, ~2 hours) (done)
 
 **Goal:** Upload file → chunks stored in Qdrant.
 
@@ -227,7 +227,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 4 — RAG Retrieval (Day 2, ~1 hour)
+### ✅ PHASE 4 — RAG Retrieval (Day 2, ~1 hour) (done)
 
 **Goal:** Query → get relevant chunks back.
 
@@ -243,7 +243,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 5 — Memory System (Day 2, ~45 min)
+### ✅ PHASE 5 — Memory System (Day 2, ~45 min) (done)
 
 **Goal:** Conversation context persists within a session.
 
@@ -260,7 +260,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 6 — Mock Tools (Day 3, ~1.5 hours)
+### ✅ PHASE 6 — Mock Tools (Day 3, ~1.5 hours) 
 
 **Goal:** Tools that look up JSON data and return structured results.
 

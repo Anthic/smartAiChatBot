@@ -1,0 +1,42 @@
+[
+  {
+    "order_id": "ORD001",
+    "customer_name": "Anthi Kumar Singh",
+    "status": "Shipped",
+    "estimated_delivery": "2026-07-05",
+    "carrier": "DHL",
+    "tracking_number": "DHL-983745"
+  },
+  {
+    "order_id": "ORD002",
+    "customer_name": "Sarah Ahmed",
+    "status": "Processing",
+    "estimated_delivery": "2026-07-08",
+    "carrier": "FedEx",
+    "tracking_number": "FDX-441209"
+  },
+  {
+    "order_id": "ORD003",
+    "customer_name": "John Carter",
+    "status": "Delivered",
+    "estimated_delivery": "2026-06-29",
+    "carrier": "UPS",
+    "tracking_number": "UPS-673810"
+  },
+  {
+    "order_id": "ORD004",
+    "customer_name": "Maya Rahman",
+    "status": "Out for Delivery",
+    "estimated_delivery": "2026-07-01",
+    "carrier": "DHL",
+    "tracking_number": "DHL-112908"
+  },
+  {
+    "order_id": "ORD005",
+    "customer_name": "Liam Smith",
+    "status": "Delayed",
+    "estimated_delivery": "2026-07-10",
+    "carrier": "USPS",
+    "tracking_number": "USPS-550193"
+  }
+]

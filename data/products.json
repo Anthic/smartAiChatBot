@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Wireless Mouse",
+    "category": "Accessories",
+    "price": 29.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 42
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "category": "Accessories",
+    "price": 89.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 15
+  },
+  {
+    "name": "USB-C Hub",
+    "category": "Accessories",
+    "price": 49.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 23
+  },
+  {
+    "name": "Noise Cancelling Headphones",
+    "category": "Audio",
+    "price": 149.99,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_count": 0
+  },
+  {
+    "name": "Laptop Stand",
+    "category": "Office",
+    "price": 39.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 31
+  },
+  {
+    "name": "Webcam 1080p",
+    "category": "Video",
+    "price": 59.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 18
+  },
+  {
+    "name": "Portable SSD 1TB",
+    "category": "Storage",
+    "price": 119.99,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_count": 9
+  },
+  {
+    "name": "Bluetooth Speaker",
+    "category": "Audio",
+    "price": 74.99,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_count": 0
+  }
+]
