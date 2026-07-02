@@ -8,7 +8,7 @@ from app.api.routes.chat import router as chat_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     #Startup 
-    print(f"Smart AI Agent starting up.")
+    print(f"Studio Butterfly AI Support Agent starting up.")
     print(f"  Chat model  : {settings.MISTRAL_CHAT_MODEL}")
     print(f"  Embed model : {settings.MISTRAL_EMBED_MODEL}")
     print(f"  Collection  : {settings.QDRANT_COLLECTION_NAME}")
@@ -20,12 +20,12 @@ async def lifespan(app: FastAPI):
     yield 
 
    
-    print("Smart AI Agent shutting down.")
+    print("Studio Butterfly AI Support Agent shutting down.")
 
 
 app = FastAPI(
-    title="Smart AI Agent",
-    description="AI agent that reads documents, remembers context, and calls tools.",
+    title="Studio Butterfly AI Support Agent",
+    description="Decision-making support agent for Studio Butterfly that reads documents, remembers context, and calls tools.",
     version="1.0.0",
     lifespan=lifespan,
 )
