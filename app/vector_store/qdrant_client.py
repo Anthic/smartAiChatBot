@@ -2,6 +2,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 from app.config import settings
 import uuid
+from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, MatchValue
 
 
 _client: QdrantClient | None = None
@@ -57,14 +58,29 @@ def upsert_vectors(vectors: list[list[float]], payloads: list[dict]) -> int:
     return len(points)
 
 
-def search_vectors(query_vector: list[float], top_k: int = 3) -> list[dict]:
+def search_vectors(
+    query_vector: list[float],
+    top_k: int = 3,
+    source_files: list[str] | None = None,
+) -> list[dict]:
     client = get_qdrant_client()
-
+    query_filter = None
+    if source_files:
+        query_filter = Filter(
+            should=[
+                FieldCondition(
+                    key="source_file",
+                    match=MatchValue(value=filename)
+                )
+                for filename in source_files
+            ]
+        )
 
     response = client.query_points(
         collection_name=settings.QDRANT_COLLECTION_NAME,
         query=query_vector,
         limit=top_k,
+        query_filter=query_filter,
         with_payload=True, 
     )
 

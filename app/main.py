@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.vector_store.qdrant_client import create_collection_if_not_exists
 from app.api.routes.ingest import router as ingest_router
-
+from app.api.routes.chat import router as chat_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     #Startup 
@@ -39,7 +39,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#all routes --> all API endpoints 
 app.include_router(ingest_router)
+app.include_router(chat_router)
+
+
 
 @app.get("/health", tags=["System"])
 async def health_check():

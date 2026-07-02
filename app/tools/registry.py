@@ -5,7 +5,6 @@ from typing import Any
 
 from app.tools.order_status import get_order_status
 from app.tools.product_search import search_product
-from app.tools.weather import get_weather
 
 
 TOOL_DEFINITIONS: list[dict[str, Any]] = [
@@ -43,30 +42,12 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
             },
         },
     },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": "Get mock weather information for a city.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
-                        "type": "string",
-                        "description": "City name, for example Dhaka or New York.",
-                    }
-                },
-                "required": ["city"],
-            },
-        },
-    },
 ]
 
 
 _TOOL_REGISTRY: dict[str, Callable[..., dict[str, Any]]] = {
     "get_order_status": get_order_status,
     "search_product": search_product,
-    "get_weather": get_weather,
 }
 
 

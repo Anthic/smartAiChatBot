@@ -260,7 +260,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 6 — Mock Tools (Day 3, ~1.5 hours) 
+### ✅ PHASE 6 — Mock Tools (Day 3, ~1.5 hours) (done)
 
 **Goal:** Tools that look up JSON data and return structured results.
 
@@ -286,7 +286,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 7 — The Agent Router (Day 3, ~2 hours — MOST IMPORTANT)
+### ✅ PHASE 7 — The Agent Router (Day 3, ~2 hours — MOST IMPORTANT) (done)
 
 **Goal:** The brain that decides what to do with each message.
 
@@ -320,7 +320,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 8 — Chat API (Day 3, ~1 hour)
+### ✅ PHASE 8 — Chat API (Day 3, ~1 hour) (done)
 
 **Goal:** Full chat endpoint wired up.
 
@@ -341,7 +341,7 @@ httpx                     # Also used for TestClient
 
 ---
 
-### ✅ PHASE 9 — Testing (Day 4, ~2 hours)
+### ✅ PHASE 9 — Testing (Day 4, ~2 hours) (done)
 
 **Goal:** Tests that prove evaluation criteria are met.
 

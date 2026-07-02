@@ -16,7 +16,12 @@ class RetrievedChunk(TypedDict) :
 class RetrievalError(RuntimeError) :
     """Raised when RAG retrieval fails."""
 
-def retrieve(query_text: str, top_k: int | None = None) -> list[RetrievedChunk]:
+def retrieve(
+    query_text: str, 
+    top_k: int | None = None,
+    source_files: list[str] | None = None,
+
+) -> list[RetrievedChunk]:
     """
     Retrieve relevant document chunks from Qdrant.
 
@@ -36,7 +41,11 @@ def retrieve(query_text: str, top_k: int | None = None) -> list[RetrievedChunk]:
     
     try:
         query_vector = embedding_client.embed_query(query)
-        results = search_vectors(query_vector=query_vector, top_k=limit)
+        results = search_vectors(
+            query_vector=query_vector, 
+            top_k=limit,
+            source_files=source_files,
+        )
     except Exception as e:
         raise RetrievalError("Failed to retrieve relevant document chunks.") from e
     

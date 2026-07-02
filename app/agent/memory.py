@@ -34,7 +34,7 @@ class ConversationMemory :
     def get_history(self) -> list[Message] :
         return list(self._message)
     
-    def clean(self) -> None :
+    def clear(self) -> None :
         self._message.clear()
         
         

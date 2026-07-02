@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     # LLM
     MISTRAL_API_KEY: str
-    MISTRAL_CHAT_MODEL: str = "mistral-large-latest"
+    MISTRAL_CHAT_MODEL: str = "mistral-small-latest"
     MISTRAL_EMBED_MODEL: str = "mistral-embed"
 
     # Qdrant Cloud

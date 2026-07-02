@@ -10,6 +10,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from app.rag.embeddings import embedding_client
 from app.vector_store.qdrant_client import upsert_vectors
 
+import json
+from mistralai.client import Mistral
+from app.config import settings
+
+
 SUPPORTED_FILE_TYPES = {"pdf", "txt", "md", "markdown"}
 
 
@@ -66,6 +71,41 @@ def chunk_text(text: str) -> list[str]:
     return [chunk.strip() for chunk in chunks if chunk.strip()]
 
 
+def generate_document_insights(text: str) -> tuple[str, list[str]]:
+    """Use Mistral AI in JSON mode to generate a summary and suggested questions."""
+    client = Mistral(api_key=settings.MISTRAL_API_KEY)
+    
+ 
+    sample_text = text[:8000]
+    
+    prompt = f"""
+    Analyze the following document content.
+    Provide a concise 3-bullet point summary of the document.
+    Also suggest 3 specific questions a user might want to ask about this document.
+    
+    Format your response EXACTLY as a JSON object with two keys:
+    "summary": "bullet 1\\nbullet 2\\nbullet 3",
+    "suggested_questions": ["question 1", "question 2", "question 3"]
+    
+    Document Content:
+    {sample_text}
+    """.strip()
+    
+    try:
+        response = client.chat.complete(
+            model=settings.MISTRAL_CHAT_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.0
+        )
+        content = response.choices[0].message.content or "{}"
+        insights = json.loads(content)
+        return insights.get("summary", ""), insights.get("suggested_questions", [])
+    except Exception:
+        return "Summary could not be generated automatically.", ["What does this document cover?"]
+
+
+
 def ingest_document(
     file_path: str | Path,
     file_type: str,
@@ -88,11 +128,17 @@ def ingest_document(
         for index, chunk in enumerate(chunks)
     ]
 
-    stored_count = upsert_vectors(vectors=vectors, payloads=payloads)
+    stored_count = upsert_vectors(vectors=vectors, payloads=payloads) 
+
+    # summary and suggested questions
+    summary, suggested_questions = generate_document_insights(raw_text)
+
     return {
         "status": "success",
         "source_file": source_file or path.name,
         "chunks_stored": stored_count,
+        "summary": summary,
+        "suggested_questions": suggested_questions,
     }
 
 

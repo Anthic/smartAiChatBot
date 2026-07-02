@@ -10,5 +10,5 @@ wheels/
 .venv
 .env
 qdrant_data/
-data/sample_docs/*.pdf
+
 .pytest_cache/
